@@ -13,6 +13,34 @@ class Television:
         self.__volume = Television.MIN_VOLUME
         self.__channel = Television.MIN_CHANNEL
 
+    def get_status(self) -> bool:
+        """
+        Returns TV status
+        :return: status
+        """
+        return self.__status
+
+    def get_mute(self) -> bool:
+        """
+        Returns mute status
+        :return: Mute status
+        """
+        return self.__muted
+
+    def get_channel(self) -> int:
+        """
+        Returns the channel number
+        :return: Channel number
+        """
+        return self.__channel
+
+    def get_volume(self) -> int:
+        """
+        Returns volume
+        :return: Volume
+        """
+        return self.__volume
+
     def power(self) -> None:
         """
         Changes the power status to the opposite of what it currently is
