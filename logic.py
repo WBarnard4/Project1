@@ -14,7 +14,6 @@ class Logic(QMainWindow, Ui_MainWindow):
 
         # create tele
         self.tele = Television()
-        print(self.tele)
 
         # hide channels
         self.Channel0Image.setVisible(False)
