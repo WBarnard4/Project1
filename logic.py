@@ -35,42 +35,42 @@ class Logic(QMainWindow, Ui_MainWindow):
         # mute button stuff
         self.muteButton.clicked.connect((lambda: self.volume_control(3)))
 
-    def volume_control(self, bruh: int) -> None:
+    def volume_control(self, decideNum: int) -> None:
         """
         Controls volume and slider
-        :param bruh: Determines which part to execute
+        :param decideNum: Determines which part to execute
         """
-        if bruh == 1 and self.tele.get_status():
+        if decideNum == 1 and self.tele.get_status():
             self.tele.volume_up()
             self.volumeSlider.setValue(self.tele.get_volume())
-        elif bruh == 2 and self.tele.get_status():
+        elif decideNum == 2 and self.tele.get_status():
             self.tele.volume_down()
             self.volumeSlider.setValue(self.tele.get_volume())
-        elif bruh == 3 and self.tele.get_status():
+        elif decideNum == 3 and self.tele.get_status():
             self.tele.mute()
             if self.tele.get_mute():
                 self.volumeSlider.setValue(0)
             else:
                 self.volumeSlider.setValue(self.tele.get_volume())
 
-    def channel_control(self, bruh: int) -> None:
+    def channel_control(self, decideNum: int) -> None:
         """
         Controls which channel appears on screen
-        :param bruh: Determines which part to execute
+        :param decideNum: Determines which part to execute
         """
         imgList = [self.Channel0Image, self.Channel1Image, self.Channel2Image, self.Channel3Image]
         for img in imgList:
             img.setVisible(False)
 
-        if bruh == 1 and self.tele.get_status():
+        if decideNum == 1 and self.tele.get_status():
             imgList[self.tele.get_channel()].setVisible(False)
             self.tele.channel_up()
             imgList[self.tele.get_channel()].setVisible(True)
-        elif bruh == 2 and self.tele.get_status():
+        elif decideNum == 2 and self.tele.get_status():
             imgList[self.tele.get_channel()].setVisible(False)
             self.tele.channel_down()
             imgList[self.tele.get_channel()].setVisible(True)
-        elif bruh == 3:
+        elif decideNum == 3:
             self.tele.power()
             if self.tele.get_status():
                 imgList[self.tele.get_channel()].setVisible(True)
